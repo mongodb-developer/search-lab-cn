@@ -1,13 +1,13 @@
-# 📘 The `equals` operator
+# 📘 `equals` 操作符
 
-The `equals` operator is used to search for a specific value in a field. It is similar to the `match` operator, but the operation will be performed by Lucene, and can be combined with other operators to refine results.
+`equals` 操作符用于在字段中搜索特定值。它类似于 `match` 操作符，但操作将由 Lucene 执行，并且可以与其他操作符结合使用以优化结果。
 
-The `equals` operator has the following syntax. You can find more explanation about it in the <Link to="">documentation</Link>.
+`equals` 操作符的语法如下。您可以在[文档](<Link to="">)中找到更多解释。
 
-```js
+```
 {
    $search: {
-      "index": <index name>, // optional, defaults to "default"
+      "index": <index name>, // 可选，默认为 "default"
       "equals": {
          "path": "<field-to-search>",
          "value": <boolean-value>|<objectId>|<number>|<date>,
@@ -17,4 +17,4 @@ The `equals` operator has the following syntax. You can find more explanation ab
 }
 ```
 
-This could be useful if you wanted to query only for books that were published in a specific year.
+如果您只想查询在特定年份出版的书籍，这将非常有用。

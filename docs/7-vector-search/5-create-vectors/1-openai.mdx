@@ -1,42 +1,42 @@
-# Using OpenAI
+# 使用 OpenAI
 
 :::info
-Take-home activity, do it if you are following at home, won't be covered during the hands-on Lab.
+家庭作业活动，如果您在家中自行完成，请执行此操作，不会在动手实验中覆盖。
 :::
 
-OpenAI is a company that develops AI models for natural language processing. They offer a free API that you can use to create embeddings for your documents. The API is called [OpenAI's Embedding API](https://platform.openai.com/docs/api-reference/embeddings).
+OpenAI 是一家开发自然语言处理 AI 模型的公司。他们提供了一个免费的 API，您可以使用它为文档创建嵌入。该 API 称为 [OpenAI 的嵌入 API](https://platform.openai.com/docs/api-reference/embeddings)。
 
-To get some embeddings using their API, you need to create an account and get an API key.
+要使用他们的 API 获取一些嵌入，您需要创建一个账户并获取一个 API 密钥。
 
-## Create an OpenAI account and get an API key
+## 创建 OpenAI 账户并获取 API 密钥
 
-To create an account, go to [https://openai.com/](http://openai.com/) and click on the "Log In" button in the upper right corner. This will redirect you to the login page, where you'll have the option to sign up for their services.
+要创建账户，请访问 [https://openai.com/](http://openai.com/) 并点击右上角的“登录”按钮。这将重定向您到登录页面，您可以选择注册他们的服务。
 
-<Screenshot src="img/screenshots/7-vector-search/5-create-vectors/3-openai/1-signup.png" url="https://openai.com/" alt="The OpenAI signup page" />
+<Screenshot src="img/screenshots/7-vector-search/5-create-vectors/3-openai/1-signup.png" url="https://openai.com/" alt="OpenAI 注册页面" />
 
-Follow the instructions on the screen, and verify your email address.
+按照屏幕上的说明操作，并验证您的电子邮件地址。
 
-Once you have an account, you can go to the [API keys page](https://platform.openai.com/account/api-keys) to get an API key.
+一旦您有了账户，就可以转到 [API 密钥页面](https://platform.openai.com/account/api-keys) 获取 API 密钥。
 
-From there, click on the **Create new secret key** button.
+在那里，点击 **创建新密钥** 按钮。
 
-<Screenshot src="img/screenshots/7-vector-search/5-create-vectors/3-openai/2-create-key.png" url="https://platform.openai.com/account/api-keys" alt="The OpenAI API keys page" />
+<Screenshot src="img/screenshots/7-vector-search/5-create-vectors/3-openai/2-create-key.png" url="https://platform.openai.com/account/api-keys" alt="OpenAI API 密钥页面" />
 
-You'll be prompted to give your key a name. You can call it "MongoDB Vector Search Demo". Then click on the **Create secret key** button.
+您将被提示给您的密钥命名。您可以将其称为“MongoDB 向量搜索演示”。然后点击 **创建密钥** 按钮。
 
-You will then be presented with your API key. Copy it and save it somewhere safe.
+然后会显示您的 API 密钥。复制它并保存在安全的地方。
 
-<Screenshot src="img/screenshots/7-vector-search/5-create-vectors/3-openai/3-api-key.png" url="https://platform.openai.com/account/api-keys" alt="The OpenAI API key" />
+<Screenshot src="img/screenshots/7-vector-search/5-create-vectors/3-openai/3-api-key.png" url="https://platform.openai.com/account/api-keys" alt="OpenAI API 密钥" />
 
 :::caution
-Make sure you copy this key somewhere as you'll need it later on, and you won't be able to see it again.
+请确保您将此密钥复制到某个地方以便稍后使用，之后您将无法再次看到它。
 :::
 
-Now that you have an API key, you can use it to create embeddings for your documents.
+现在您有了 API 密钥，可以用它为您的文档创建嵌入。
 
-## Create embeddings for documents
+## 为文档创建嵌入
 
-To create embeddings for your documents by sending curl commands to the OpenAI API, you can use the following command.
+要通过发送 curl 命令到 OpenAI API 为您的文档创建嵌入，您可以使用以下命令。
 
 ```bash
 OPENAI_API_KEY=<YOUR_API_KEY>
@@ -49,23 +49,23 @@ curl https://api.openai.com/v1/embeddings \
   }'
 ```
 
-You can find more information about the API in the [OpenAI documentation](https://platform.openai.com/docs/api-reference/embeddings).
+您可以在 [OpenAI 文档](https://platform.openai.com/docs/api-reference/embeddings) 中找到有关该 API 的更多信息。
 
-## Create embeddings for the books
+## 为书籍创建嵌入
 
-To create the embeddings for the books in your collection, you should run this curl command, or use the Node.js library, for each book. This process is somewhat time consuming, so we've already created them for you.
+要为您的集合中的书籍创建嵌入，您应该为每本书运行此 curl 命令，或使用 Node.js 库。这个过程有点耗时，所以我们已经为您创建了它们。
 
-You can find the 1586 dimensions vector in `embeddings` field of the books.
+您可以在书籍的 `embeddings` 字段中找到 1586 维度的向量。
 
-Because we already have the vectors for the books, we can use them with Vector Search.
+因为我们已经有了书籍的向量，所以我们可以用它们进行向量搜索。
 
-## Querying with vectors
+## 使用向量进行查询
 
-To query the data, Vector Search will need to calculate the distance between the query vector and the vectors of the documents in the collection.
+要查询数据，向量搜索需要计算查询向量与集合中文档向量之间的距离。
 
-To do so, you will need to vectorize your query. You can use the same function to vectorize your query as well.
+为此，您需要向量化您的查询。您可以使用相同的函数来向量化您的查询。
 
-In the library application, we've created a function that will vectorize your query for you. You can find it in the `server/src/embeddings/openai.ts` file.
+在图书馆应用程序中，我们创建了一个函数来为您向量化查询。您可以在 `server/src/embeddings/openai.ts` 文件中找到它。
 
 ```js
 import OpenAI from 'openai';
@@ -88,18 +88,10 @@ const getTermEmbeddings = async (text) => {
 export default getTermEmbeddings;
 ```
 
-## Configuring the application
+## 配置应用程序
 
-In your `server/.env` file, you'll find a few variables that you can use to configure the application.
+在 `server/.env` 文件中，您会找到一些变量，可以用来配置应用程序。
 
-The first one is `EMBEDDINGS_SOURCE`. It tells the application where to get the embeddings from. You can set it to `openai`.
+第一个是 `EMBEDDINGS_SOURCE`。它告诉应用程序从哪里获取嵌入。您可以将其设置为 `openai`。
 
-Now that you have an OpenAI API key, you can then set the `EMBEDDING_KEY` variable to your API key.
-
-```
-EMBEDDINGS_SOURCE=openai
-EMBEDDING_KEY=sk-...
-```
-
-
-
+现在您有了 OpenAI API 密钥，可以将

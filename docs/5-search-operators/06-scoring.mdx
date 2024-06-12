@@ -1,20 +1,20 @@
-# 📘 Scoring
+# 📘 评分
 
-You might have noticed that most of the operators have a `score` property, which we haven't really talked about so far.
+您可能已经注意到，大多数操作符都有一个 `score` 属性，但我们还没有真正讨论过它。
 
-Before we jump into scoring, it is important to understand what the document score is. Every document returned by an Atlas Search query is assigned a score based on relevance, and the documents included in a result set are returned in order from highest score to lowest.
+在深入了解评分之前，重要的是要理解文档评分是什么。每个由 Atlas Search 查询返回的文档都会根据相关性分配一个评分，并且结果集中包含的文档会按从高到低的评分顺序返回。
 
-Some factors that can influence the score include:
-* The position of the search term in the document,
-* The frequency of occurrence of the search term in the document,
-* The type of operator the query uses,
-* The type of analyzer the query uses.
+一些可以影响评分的因素包括：
+* 搜索词在文档中的位置，
+* 搜索词在文档中出现的频率，
+* 查询使用的操作符类型，
+* 查询使用的分析器类型。
 
-To see the scores, you will need to project a new metadata field, using `$meta`. To see the document scores in a simple phrase search for _Alice in Wonderland_, try the followin aggregation pipeline.
+要查看评分，您需要使用 `$meta` 投影一个新的元数据字段。要在简单的短语搜索 _Alice in Wonderland_ 中查看文档评分，请尝试以下聚合管道。
 
-You can run this in the aggregation builders from the Atlas UI or in Compass.
+您可以在 Atlas UI 或 Compass 的聚合构建器中运行此代码。
 
-```js
+```
 [
   {
     $search: {
@@ -39,8 +39,7 @@ You can run this in the aggregation builders from the Atlas UI or in Compass.
 ]
 ```
 
-Your first result should look be
-
+您的第一个结果应该是
 ```
 {
   "_id": "0831702877",
@@ -61,4 +60,4 @@ Your first result should look be
 }
 ```
 
-It got scored much higher than the next one because it's an exact match.
+它得分比下一个高得多，因为它是一个完全匹配。

@@ -1,19 +1,19 @@
-# 🦸 Advanced Exercises
+# 🦸 高级练习
 
 :::info
-Extra activity, do it if you have extra time or are following at home, these won't be covered during the hands-on Lab
+额外活动：如果你有额外的时间或者在家里跟随这些练习做的，这些不会在动手实验中覆盖。
 :::
 
-## Promote shorter books
+## 提升短书优先级
 
-You've noticed that readers tend to prefer shorter books. Without using a large score boost, try to promote shorter books in the search results.
+你注意到读者倾向于喜欢较短的书籍。在不使用`boost`进行分数提升的情况下，尝试在搜索结果中提升较短的书籍。
 
 :::tip
-Even without a score adjuster, the [`should`](https://www.mongodb.com/docs/atlas/atlas-search/compound/#mongodb-data-should) operator will still boost the score of the documents that match it.
+即使不使用分数调整器，[`should`](https://www.mongodb.com/docs/atlas/atlas-search/compound/#mongodb-data-should)操作符仍然会提升符合条件的文档的分数。
 :::
 
 <details>
-  <summary>Answer</summary>
+  <summary>答案</summary>
   <div>
 
 ```js
@@ -62,16 +62,16 @@ public async searchBooks(query: string): Promise<Book[]> {
 </div>
 </details>
 
-Choose your favourite method to build aggregation pipelines and try to solve the following exercises.
+选择你最喜欢的方式来构建聚合管道，并尝试解决以下练习。
 
-## Most available book of the month books
+## 最多可借阅的本月书籍
 
-Build a search aggregation stage that will promote the books of the month, and will return the books with the most copies available first.
+构建一个搜索聚合语句，提升本月书籍的优先级，并首先返回具备最多可借阅副本的书籍。
 
-## Most prolific pooh author
+## 最多产的“pooh”作者
 
-Find out which author has written the most books that contains the word "pooh" (we're talking about the bear here) in the title or in the synopsis.
+找出哪位作者写了最多的“pooh”这个词，在标题或简介中出现的书籍都算。
 
-## Assume typos, but still find the matches
+## 假设有拼写错误，但仍然找到匹配项
 
-Find books that match a user query, but also return books that match with a typo. These books should be returned after the books that match the query.
+找到与用户查询匹配的书籍，但也返回与拼写错误匹配的书籍。这些书籍应在与查询匹配的书籍之后返回。

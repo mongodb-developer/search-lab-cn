@@ -1,53 +1,53 @@
-# 👐 Testing the Search index
+# 👐 测试搜索索引
 
-Now that you have a search index, you can test it out.
+现在你有了一个搜索索引，你可以测试一下。
 
-From the list of indexes, look for the **Query** button.
+从索引列表中，寻找 **QUERY** 按钮。
 
-<Screenshot src="img/screenshots/2-search/3-test-search/1-query-button.png" alt="The Query button from the list of indexes" url="https://cloud.mongodb.com" />
+<Screenshot src="img/screenshots/2-search/3-test-search/1-query-button.png" alt="索引列表中的查询按钮" url="https://cloud.mongodb.com" />
 
-## Search Tester
+## 搜索测试器
 
-By using the **Query** button above, you will open the **Search Tester**. In the field, enter the word:
+使用上面的 **QUERY** 按钮，你将打开 **搜索测试器**。在字段中输入单词：
 
 ```
 cooking
 ```
 
-and look at the results you get.
+然后查看你得到的结果。
 
-<Screenshot src="img/screenshots/2-search/3-test-search/2-search-tester.png" alt="The Search Tester" url="https://cloud.mongodb.com" />
+<Screenshot src="img/screenshots/2-search/3-test-search/2-search-tester.png" alt="搜索测试器" url="https://cloud.mongodb.com" />
 
-You can see that you get a list of books back including:
+你可以看到你搜索到了一系列书籍，包括：
 * Pennsylvania Dutch _Cooking_: A Mennonite Community Cookbook
 * Semi-Homemade _Cooking_: Quick, Marvelous Meals and Nothing is Made from…
 * Cookin' Cajun _Cooking_ School Cookbook - Creole and Cajun Cuisine from …
 
-All those results match the word _cooking_. Notice how capitalization doesn't matter. Neither does the placement of the word in the title. The search index is smart enough to find the word _cooking_ in all those titles.
+所有这些结果都匹配了单词 _cooking_。请注意，大小写并不重要，单词在标题中的位置也不重要。搜索索引足够智能，能够在所有这些标题中找到单词 _cooking_。
 
-Already, you are providing a better experience to your developers.
+现在，你已经为你的用户提供了更好的搜索体验。
 
-## Searching only the title
+## 仅搜索标题
 
-This is great. However, this search query is searching the entire document. There might be some cases where that works for you, but in most cases, you'll likely want to limit this search only to the fields that matter. In this case, let's change it to only search the title.
+这很棒。然而，这个搜索查询正在搜索整个文档。在某些情况下，这可能对你有用，但在大多数情况下，你可能只想限制搜索到相关的字段。在这种情况下，让我们将其更改为仅搜索标题。
 
-In the **Search Tester**, click on the **Edit $search query** button, next to the green **Search** button.
+在 **搜索测试器** 中，点击绿色 **Search** 按钮旁边的 **编辑 $search 查询** 按钮。
 
-This will open up the query editor.
+这将打开查询编辑器。
 
-<Screenshot src="img/screenshots/2-search/3-test-search/3-query-editor.png" alt="The Edit $search query button" url="https://cloud.mongodb.com" />
+<Screenshot src="img/screenshots/2-search/3-test-search/3-query-editor.png" alt="编辑 $search 查询按钮" url="https://cloud.mongodb.com" />
 
-Notice that the `path` property currently shows `*`. This means that it will search the entire document. Try to change the search to only search the `title` field.
+请注意，`path` 属性目前显示为 `*`。这意味着它将搜索整个文档。尝试将搜索更改为仅搜索 `title` 字段。
 
 :::tip
-You can find more information about how to construct a query path in the [Search documentation](https://www.mongodb.com/docs/atlas/atlas-search/path-construction/).
+你可以在 [搜索文档](https://www.mongodb.com/docs/atlas/atlas-search/path-construction/) 中找到更多关于如何构建查询路径的信息。
 :::
 
 <details>
-  <summary>Click here to see the answer</summary>
+  <summary>点击这里查看答案</summary>
   <div>
 
-```js
+```
 [
   {
     $search: {
@@ -64,4 +64,4 @@ You can find more information about how to construct a query path in the [Search
 </div>
 </details>
 
-You will see the same results, but ordered differently. This has to do with relevancy, but we'll cover that in a later section.
+你会看到相同的结果，但顺序不同。这与相关性有关，但我们将在后面的章节中讨论。

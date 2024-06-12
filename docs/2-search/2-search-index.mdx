@@ -1,26 +1,26 @@
-# 👐 Create an Atlas Search index
+# 👐 创建一个 Atlas Search 索引
 
-To start using Atlas Search, you must configure a search index on your database. Atlas Search indexes categorized data in an easily searchable format and enable faster document retrieval using certain identifiers. You can create a search index right from the Atlas UI.
+要开始使用 Atlas Search，你必须在数据库上配置一个搜索索引。Atlas Search 索引以易于搜索的格式分类数据，并通过特定标识符实现更快的文档检索。你可以直接从 Atlas UI 创建搜索索引。
 
-## Step-by-step guide to creating your first Atlas Search index
+## 创建第一个 Atlas Search 索引的分步指南
 
-Open the **Database Deployments** page in MongoDB Atlas and select **Create Index** in the lower right corner.
+打开 MongoDB Atlas 中的 **Database Deployments** 页面，然后在右下角选择 **Create Index**。
 
-<Screenshot alt="The 'Database Deployments' page with the 'Create Index' link highlighted" src="img/screenshots/2-search/2-search-index/1-create-index.png" url="https://cloud.mongodb.com" />
+<Screenshot alt="在 'Database Deployments' 页面中高亮显示的 'Create Index' 链接" src="img/screenshots/2-search/2-search-index/1-create-index.png" url="https://cloud.mongodb.com" />
 
-Click the **Create Search Index** button.
+点击 **Create Search Index** 按钮。
 
-<Screenshot alt="The 'Create Search Index' button highlighted" src="img/screenshots/2-search/2-search-index/2-create-search-index.png" url="https://cloud.mongodb.com" />
+<Screenshot alt="高亮显示的 'Create Search Index' 按钮" src="img/screenshots/2-search/2-search-index/2-create-search-index.png" url="https://cloud.mongodb.com" />
 
-The first step of building the search index is selecting the configuration method. You can choose from two options — using the **Visual Editor** or writing the configuration yourself with the **JSON Editor**. Let's stick to the default **Visual Editor**. To proceed, click **Next**.
+构建搜索索引的第一步是选择配置方法。你可以从两种选项中选择——使用 **Visual Editor** 或使用 **JSON Editor** 自行编写配置。让我们保持默认的 **Visual Editor**。要继续，请点击 **Next**。
 
-<Screenshot alt="The 'Configuration Method' step of creating a new search index" src="img/screenshots/2-search/2-search-index/3-search-index-config-method.png" url="https://cloud.mongodb.com" />
+<Screenshot alt="创建新搜索索引的 'Configuration Method' 步骤" src="img/screenshots/2-search/2-search-index/3-search-index-config-method.png" url="https://cloud.mongodb.com" />
 
-Next, you need to select a name and data source for your index. Change the name to **fulltextsearch** and select the database **library** and the collection **books**.
+接下来，你需要为索引选择一个名称和数据源。将名称更改为 **fulltextsearch**，并选择数据库 **library** 和集合 **books**。
 
-<Screenshot alt="The 'Name & Data Source' step of creating a new search index" src="img/screenshots/2-search/2-search-index/4-search-index-config-name-datasource.png" url="https://cloud.mongodb.com" />
+<Screenshot alt="创建新搜索索引的 'Name & Data Source' 步骤" src="img/screenshots/2-search/2-search-index/4-search-index-config-name-datasource.png" url="https://cloud.mongodb.com" />
 
-The final step allows you to review the index configuration and refine it if needed. You may also see the JSON that was generated from your configuration by clicking **View JSON**.
+最后一步允许你审查索引配置并在需要时进行改进。你还可以通过点击 **View JSON** 查看从你的配置生成的 JSON。
 
     ```JSON
     {
@@ -31,21 +31,20 @@ The final step allows you to review the index configuration and refine it if nee
     ```
 
 :::info
-The index is using dynamic field mappings. We didn't configure any explicit (static) mappings between the fields in the documents and the search index. That's why Atlas created dynamic mappings that match the data in the documents to some common field types such as `double`, `string`, `array`, `int`, and `double`.
-Dynamic mappings are useful when you're just getting started with Atlas Search or if your schema changes regularly. However, they take up more space compared to static mappings.
+该索引使用动态字段映射。我们没有在文档和搜索索引之间配置任何明确（静态）的映射。这就是为什么 Atlas 创建了动态映射，将文档中的数据匹配到一些常见字段类型，如 `double`、`string`、`array` 和 `int`。
+动态映射在你刚开始使用 Atlas Search 或你的模式经常变化时非常有用。然而，与静态映射相比，它们占用更多空间。
 :::
 
-You don't need to refine this index. Go ahead and click **Create Search Index**.
+你不需要改进此索引。继续点击 **Create Search Index**。
 
-<Screenshot alt="The 'Review & Refine' step of creating a new search index" src="img/screenshots/2-search/2-search-index/5-search-index-config-refine.png" url="https://cloud.mongodb.com" />
+<Screenshot alt="创建新搜索索引的 'Review & Refine' 步骤" src="img/screenshots/2-search/2-search-index/5-search-index-config-refine.png" url="https://cloud.mongodb.com" />
 
-You'll be redirected to a page showing all of the search indexes used in your Atlas project. Creating the index should take up to a minute.
+你将被重定向到一个页面，显示你的 Atlas 项目中使用的所有搜索索引。创建索引大约需要一分钟。
 
 :::info
-When your search index reaches status **Active**, you'll be able to see more information about the index. For example, the number of indexed documents, the field mappings and the index size. Notice also that you're using 1 out of the 3 free search indexes that come with your free M0 database.
+当你的搜索索引状态变为 **Active** 时，你将能够看到更多关于索引的信息。例如，索引的文档数量、字段映射和索引大小。还要注意，你使用的是免费 M0 数据库附带的 3 个免费搜索索引中的 1 个额度。
 :::
 
-<Screenshot alt="The 'Search Indexes' page with the newly created index highlighted" src="img/screenshots/2-search/2-search-index/6-search-indexes-list.png" url="https://cloud.mongodb.com" />
+<Screenshot alt="高亮显示新创建的索引的 'Search Indexes' 页面" src="img/screenshots/2-search/2-search-index/6-search-indexes-list.png" url="https://cloud.mongodb.com" />
 
-Once you see your new index showing as `Active` in the list, you can move to the next step.
-
+当你看到新索引在列表中显示为 `Active` 时，你可以继续下一步。

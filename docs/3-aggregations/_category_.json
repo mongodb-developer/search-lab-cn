@@ -1,8 +1,8 @@
 {
-  "label": "Aggregation pipelines",
+  "label": "聚合管道",
   "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "In this section, you will  learn how to query your data using MongoDB's query language."
+    "description": "在本节中，您将学习如何使用 MongoDB 的查询语言查询数据。"
   }
 }

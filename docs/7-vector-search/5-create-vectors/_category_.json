@@ -1,8 +1,8 @@
 {
-    "label": "🏡 Create Vectors",
-    "position": 999,
+    "label": "🏡 创建向量",
+    "position": 75,
     "link": {
         "type": "generated-index",
-        "description": "This is a take-home activity. Do it if you're following at home. In this section, you'll learn how to create embeddings from various providers."
+        "description": "这是一个家庭作业活动。如果您在家中自行完成，请执行此操作。在本部分中，您将学习如何从各种提供者创建嵌入。"
     }
 }

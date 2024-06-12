@@ -1,21 +1,21 @@
-# 📘 The `text` operator
+# 📘 `text` 操作符
 
-The `text` operator is used to perform a full-text search using the analyzer that you specify in the index configuration. It is used to search for words or phrases in the full-text fields of your documents.
+`text` 操作符用于使用您在索引配置中指定的分析器执行全文搜索。它用于在文档的全文字段中搜索单词或短语。
 
-The `text` operator uses the `OR` operator to combine the search terms. For example, if you search for `Joy of Cooking`, the search will return all documents that contain either `Joy`, `of`, `Cooking` or a combination of those.
+`text` 操作符使用 `OR` 操作符来组合搜索词。例如，如果您搜索 `Joy of Cooking`，搜索将返回包含 `Joy`、`of`、`Cooking` 或它们组合的所有文档。
 
 :::caution
-This can sometimes be the desired outcome, but it might also return a lot of undesired results. Those documents containing the word `of`, for example, are most likely not relevant to your search.
+这有时可能是您想要的结果，但也可能会返回大量不相关的结果。例如，那些包含单词 `of` 的文档，很可能与您的搜索无关。
 :::
 
-We've already covered the `path` property, but there are other properties that you can use with the `text` operator.
+我们已经介绍了 `path` 属性，但 `text` 操作符还有其他可用的属性。
 
-The full definition of the text operator goes as follow. More details can be found in the <Link to="https://www.mongodb.com/docs/atlas/atlas-search/text/">documentation</Link>.
+`text` 操作符的完整定义如下。更多详细信息可以在[文档](https://www.mongodb.com/docs/atlas/atlas-search/text/)中找到。
 
-```js
+```
 {
   $search: {
-    "index": <index name>, // optional, defaults to "default"
+    "index": <index name>, // 可选，默认为 "default"
     "text": {
       "query": "<search-string>",
       "path": "<field-to-search>",
@@ -27,16 +27,16 @@ The full definition of the text operator goes as follow. More details can be fou
 }
 ```
 
-Let's take a look at each of these properties.
+让我们看看这些属性中的每一个。
 
-## The `fuzzy` property
+## `fuzzy` 属性
 
-Fuzzy search is a technique that allows you to search for terms that are similar to the one you are looking for. It is useful when your users might make typos or spelling mistakes in their search queries.
+模糊搜索是一种允许您搜索与目标词相似的术语的技术。当用户在搜索查询中可能会拼写错误或拼写错误时，它非常有用。
 
-There are many options you can use with the `fuzzy` property, and you can find out more in the docs. For now, we'll focus on the `maxEdits` option. MaxEdits will specify the number of one character edits that can be made to find a match.
+`fuzzy` 属性有许多选项，您可以在文档中找到更多信息。现在，我们将重点关注 `maxEdits` 选项。MaxEdits 将指定可以进行的字符编辑的数量以找到匹配项。
 
-For example, if you search for `Alice`, you should find the book _Alice in Wonderland_. However, if you make one, or multiple typos, such as `Alyse`, `Alise`, or `Allice`, you will not find the book. This is where the `maxEdits` option comes in handy. With a maxEdits of 1, you will find the book even if you make one typo.
+例如，如果您搜索 `Alice`，您应该找到书 _Alice in Wonderland_。但是，如果您有一个或多个拼写错误，如 `Alyse`、`Alise` 或 `Allice`，您将找不到这本书。这时 `maxEdits` 选项就派上用场了。设置为 1 的 maxEdits，您即使有一个拼写错误也能找到这本书。
 
-## The `synonyms` property
+## `synonyms` 属性
 
-The synonyms property allows you to specify a mapping of synonyms that will be used in your search. For example, if you search for `car`, you might want to find documents that contain the word `automobile` as well. You can specify a mapping of synonyms in your index configuration, and then use the `synonyms` property in your search query to use that mapping.
+`synonyms` 属性允许您指定将在搜索中使用的同义词映射。例如，如果您搜索 `car`，您可能也想找到包含 `automobile` 这个词的文档。您可以在索引配置中指定同义词映射，然后在搜索查询中使用 `synonyms` 属性来使用该映射。

@@ -1,31 +1,31 @@
-# 📘 How Atlas Search Works
+# 📘 Atlas Search 如何工作
 
-Atlas Search uses inverted indexes to support text search queries. An inverted index is a data structure that maps each unique term in a collection to the documents that contain that term. The index is sorted by term, with each term referencing the documents that contain it.
+Atlas Search 使用倒排索引来支持文本搜索查询。倒排索引是一种数据结构，将集合中的每个唯一词汇映射到包含该词汇的文档。索引按词汇排序，每个词汇引用包含它的文档。
 
-## Simple String Search
+## 简单的字符串搜索
 
-When you do a simple query in your database using a LIKE operator, or a regular expression, the database has to scan every document in the collection to find the matching documents. This is a slow process, and it gets slower as the number of documents in the collection increases.
+当你在数据库中使用 LIKE 操作符或正则表达式进行简单查询时，数据库必须扫描集合中的每个文档以找到匹配的文档。这是一个缓慢的过程，随着集合中文档数量的增加，它会变得更慢。
 
-![Simple String Search](/img/1-full-text-search/3-string-search.gif)
+![简单的字符串搜索](/img/1-full-text-search/3-string-search.gif)
 
-## Full Text Search
+## 全文搜索
 
-Full-text search is meant to search large amounts of text. For example, a search engine will use a full-text search to look for keywords in all the web pages that it indexed. The key to this technique is indexing.
+全文搜索旨在搜索大量文本。例如，搜索引擎将使用全文搜索在其索引的所有网页中查找关键字。这种技术的关键是索引。
 
-Indexing can be done in different ways, such as batch indexing or incremental indexing. The index then acts as an extensive glossary for any matching documents. Various techniques can then be used to extract the data. Apache Lucene, the open sourced search library, uses an inversed index to find the matching items. In the case of our menu search, each word links to the matching menu item.
+索引可以通过不同的方式完成，如批量索引或增量索引。然后，索引充当任何匹配文档的广泛词汇表。然后可以使用各种技术来提取数据。开源搜索库 Apache Lucene 使用倒排索引来查找匹配的项目。在我们的全文搜索中，每个词汇链接到匹配的文档项。
 
-![Full Text Search](/img/1-full-text-search/4-full-text-search.gif)
+![全文搜索](/img/1-full-text-search/4-full-text-search.gif)
 
-This technique is much faster than string searches for large amounts of data.
+对于大量数据，这种技术比字符串搜索快得多。
 
-## Index Creation
+## 索引创建
 
-In order to prepare your data to be indexed, your data will go through a process called tokenization. Tokenization is the process of breaking a stream of text up into words, phrases, symbols, or other meaningful elements called tokens. This is done through a series of analyzers. Analyzers are the building blocks of the search engine. They are responsible for producing tokens out of the text. The tokens are then stored in the index.
+为了准备你的数据进行索引，你的数据将经过一个叫做分词的过程。分词是将文本流分解成单词、短语、符号或其他有意义元素（称为标记）的过程。这是通过一系列分词器完成的。分词器是搜索引擎的构建模块，它们负责从文本中生成标记。然后，这些标记存储在索引中。
 
-In our example, it will start by removing any diacritics (marks placed above or below letters, such as é, à, and ç in French). Then, based on the used language, the algorithms will remove filler words and only keep the stem of the terms. This way, “to eat,” “eating,” and “ate” are all classified as the same “eat” keyword. It then changes the casing to use only either uppercase or lowercase. The exact indexing process is determined by the analyzer that is used.
+在我们的示例中，它将首先去除任何变音符号（字母上方或下方的标记，如法语中的 é、à 和 ç）。然后，根据所使用的语言，算法将删除填充词，只保留词汇的词干。这样，“to eat”、“eating”和“ate”都被归类为相同的“eat”关键字。然后，它将大小写更改为仅使用大写或小写。确切的索引过程由所使用的分词器决定。
 
-![Analyzer](/img/1-full-text-search/5-analyzer.png)
+![分词器](/img/1-full-text-search/5-analyzer.png)
 
-In the end, the index will look like a glossary of all the meaningful words in your data. Each word will be linked to the documents that contain it.
+最后，索引将看起来像你数据中所有有意义词汇的词汇表。每个词汇都将链接到包含它的文档。
 
-![Glossary](/img/1-full-text-search/6-glossary.png)
+![词汇表](/img/1-full-text-search/6-glossary.png)

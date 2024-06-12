@@ -1,13 +1,13 @@
-# 📘 The `range` operator
+# 📘 `range` 操作符
 
-The `range` operator is similar to `equals`, but works on ranges of values.
+`range` 操作符类似于 `equals`，但适用于值的范围。
 
-The `range` operator has the following syntax. You can find more explanation about it in the <Link to="https://www.mongodb.com/docs/atlas/atlas-search/range/">documentation</Link>.
+`range` 操作符的语法如下。您可以在[文档](https://www.mongodb.com/docs/atlas/atlas-search/range/)中找到更多解释。
 
-```js
+```
 {
    "$search": {
-      "index": <index name>, // optional, defaults to "default"
+      "index": <index name>, // 可选，默认为 "default"
       "range": {
          "path": "<field-to-search>",
          "gt | gte": <value-to-search>,
@@ -18,4 +18,4 @@ The `range` operator has the following syntax. You can find more explanation abo
 }
 ```
 
-This could be useful if you wanted to query only for books that have a range of pages. Say you only want books between 100 and 300 pages, you could use the `range` operator to refine your results.
+如果您只想查询页数在一定范围内的书籍，这将非常有用。例如，如果您只想要 100 到 300 页之间的书籍，您可以使用 `range` 操作符来优化结果。

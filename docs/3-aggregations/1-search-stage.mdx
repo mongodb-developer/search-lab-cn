@@ -1,32 +1,32 @@
-# 👐 Construct Search queries
+# 👐 构建搜索查询
 
-You can construct Atlas Search queries with the `$search` aggregation pipeline stage.
+你可以使用 `$search` 聚合管道阶段来构建 Atlas Search 查询。
 
-<Link to="https://mongodb.com/docs/manual/core/aggregation-pipeline">MongoDB aggregation pipelines</Link> are multi-stage ‘assembly lines’ that reshape data and perform calculations. Pipelines can consist of one or more aggregation stages, performing different operations like match, group, sort, and output. For an exhaustive list of all available stages visit <Link to="https://mongodb.com/docs/manual/reference/operator/aggregation-pipeline/#std-label-aggregation-pipeline-operator-reference">the complete list of pipeline operators</Link>.
+[MongoDB 聚合管道](https://mongodb.com/docs/manual/core/aggregation-pipeline) 是多阶段的“流水线”，可以重塑数据并执行计算。管道可以由一个或多个聚合阶段组成，执行不同的操作，如匹配、分组、排序和输出。有关所有可用阶段的详尽列表，请访问[完整的管道操作符列表](https://mongodb.com/docs/manual/reference/operator/aggregation-pipeline/#std-label-aggregation-pipeline-operator-reference)。
 
 :::caution
-If you are not familiar with the aggregation pipelines, you should start with the [Advanced Querying With Aggregation Pipelines](https://mongodb-developer.github.io/aggregation-pipeline-lab/).
+如果你不熟悉聚合管道，你应该从 [聚合管道实验室](https://mongodb-developer.github.io/aggregation-pipeline-lab-cn/) 开始。
 :::
 
-In this section, we'll build an aggregation pipeline with the `$search` stage which performs full-text search using the Atlas Search index you just created.
+在本节中，我们将使用 `$search` 阶段构建一个聚合管道，该阶段使用你刚刚创建的 Atlas Search 索引执行全文搜索。
 
-## Aggregations in the Atlas UI
+## 在 Atlas UI 中进行聚合
 
-Navigate to the **Collections** tab of your database deployment, pick the `books` collection, and navigate to the **Aggregation** tab from the navbar under your collection details.
+导航到数据库部署的 **Collections** 选项卡，选择 `books` 集合，然后从集合详情下的导航栏中导航到 **Aggregation** 选项卡。
 
-<Screenshot alt="Aggregations tab highlighted on the collection details page" src="img/screenshots/3-aggregations/1-search-stage/1-aggregation-tab.png" url="https://cloud.mongodb.com" />
+<Screenshot alt="集合详情页面上突出显示的聚合选项卡" src="img/screenshots/3-aggregations/1-search-stage/1-aggregation-tab.png" url="https://cloud.mongodb.com" />
 
 :::tip
-The Atlas UI can start feeling a bit cramped at this point. You can also use the aggregation pipeline builder in <Link to="https://www.mongodb.com/products/tools/compass">Compass</Link> for a better experience.
+此时 Atlas UI 可能会显得有点拥挤。你也可以使用 [Compass](https://www.mongodb.com/products/tools/compass) 中的聚合管道构建器来获得更好的体验。
 :::
 
-Click the **Add Stage** button and type **$search** in the **select** input.
+点击 **Add Stage** 按钮，并在 **select** 输入框中输入 **$search**。
 
-<Screenshot alt="Stage 1 of the pipeline with the $search stage selected" src="img/screenshots/3-aggregations/1-search-stage/2-search-stage.png" url="https://cloud.mongodb.com" />
+<Screenshot alt="选择了 $search 阶段的管道第 1 阶段" src="img/screenshots/3-aggregations/1-search-stage/2-search-stage.png" url="https://cloud.mongodb.com" />
 
-Add the following code for the `$search` stage.
+为 `$search` 阶段添加以下代码。
 
-```js
+```
 {
     index: "fulltextsearch",
     text: {
@@ -36,17 +36,17 @@ Add the following code for the `$search` stage.
 }
 ```
 
-The stage uses the "fulltextsearch" index. You don't need to explicitly define the index if it's "default" but you can keep it for clarity.
+该阶段使用 "fulltextsearch" 索引。如果索引是 "default"，你不需要显式定义索引，但为了清晰起见，你可以保留它。
 
-The `text` operator will search for "cooking" in the `title` field. You should see a collection of documents returned on the right.
+`text` 操作符将在 `title` 字段中搜索 "cooking"。你应该在右侧看到返回的文档集合。
 
-Click the **Add Stage** button, scroll down, and select **$project** for Stage 2.
+点击 **Add Stage** 按钮，向下滚动并选择 **$project** 作为第 2 阶段。
 
-<Screenshot alt="Stage 2 of the pipeline with the $project stage selected" src="img/screenshots/3-aggregations/1-search-stage/3-project-stage.png" url="https://cloud.mongodb.com" />
+<Screenshot alt="选择了 $project 阶段的管道第 2 阶段" src="img/screenshots/3-aggregations/1-search-stage/3-project-stage.png" url="https://cloud.mongodb.com" />
 
-Add the following implementation for the `$project` stage to filter the returned fields.
+为 `$project` 阶段添加以下实现代码来过滤返回的字段。
 
-```js
+```
 {
   title: 1,
   authors: 1,
@@ -55,4 +55,4 @@ Add the following implementation for the `$project` stage to filter the returned
 }
 ```
 
-At this point, you should see similar results as what you did in the last section, as this is pretty much the same query.
+此时，你应该看到与上一节相似的结果，因为这几乎是相同的查询。

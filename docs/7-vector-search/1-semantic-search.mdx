@@ -1,27 +1,31 @@
-# 📘 Semantic Search
+---
+sidebar_position: 71
+---
 
-We can't have a technical event without talking about AI, ML, and LLMs these days. So, let's talk about semantic search.
+# 📘 语义搜索
 
-## What is semantic search?
+如今，我们不能在没有讨论 AI、ML 和 LLMs 的情况下举办技术活动。那么，让我们谈谈语义搜索。
 
-Semantic search is a search technique that uses the meaning of words to find relevant results. It's what powers large language models that we see nowadays.
+## 什么是语义搜索？
 
-Using semantic search, we can find relevant results even if the search terms don't appear in the results. For example, if we search for "How to make a cake", we can find results that contain the words "How to bake a cake" or "How to make a pie".
+语义搜索是一种使用词语含义来查找相关结果的搜索技术。它是推动我们现在看到的大语言模型的动力。
 
-This is done with vectors. Vectors are mathematical representations of words. They are used to find the similarity between words. For example, the word "cake" is similar to the word "pie" because they are both desserts.
+使用语义搜索，即使搜索词不出现在结果中，我们也能找到相关结果。例如，如果我们搜索“如何做蛋糕”，我们可以找到包含“如何烤蛋糕”或“如何做馅饼”词语的结果。
 
-## How to create a semantic search engine
+这是通过向量完成的。向量是词语的数学表示。它们用于找到词语之间的相似性。例如，“蛋糕”这个词与“馅饼”这个词相似，因为它们都是甜点。
 
-In our library application, let's change how our search bar works. Let's try to change the search bar behavior to find books based on their meaning, not just the words themselves.
+## 如何创建语义搜索引擎
 
-This will help us find books such as "The Stand" when searching for "plague apocalypse".
+在我们的图书馆应用程序中，让我们改变搜索栏的工作方式。试着改变搜索栏的行为，根据书籍的含义而不仅仅是词语本身来查找书籍。
 
-Even if those words don't appear in the book title or description, we want to be able to find them.
+这将帮助我们在搜索“瘟疫末日”时找到《The Stand（末日逼近）》这本书。（用中文搜索同样能搜到英文相关书籍）
 
-You could use something similar to provide your customers with items that are similar to the ones they are looking at. For example, if a customer is looking at a pair of hiking boots, you could show them other equipment they might need.
+即使这些词不出现在书名或描述中，我们也希望能够找到它们。
 
-## Where does MongoDB come in?
+你可以使用类似的方法为你的客户提供与他们正在查看的项目相似的项目。例如，如果客户正在查看一双登山靴，你可以向他们展示他们可能需要的其他装备。
 
-With its document model, MongoDB is a great fit for storing vectors. You can store vectors as arrays of numbers in a document.
+## MongoDB 在哪里发挥作用？
 
-When time comes to search for the relevant results, we can leverage the power of Lucene, just like we did for the full-text search.
+凭借其文档模型，MongoDB 非常适合存储向量。你可以将向量作为数字数组存储在文档中。
+
+当需要搜索相关结果时，我们可以像进行全文搜索一样，利用 Lucene 的强大功能。
