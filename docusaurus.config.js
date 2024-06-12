@@ -4,37 +4,37 @@
 // Change here to customise config
 
 // Name of the Github Repo
-const workshopName = 'search-lab';
+const workshopName = 'search-lab-cn';
 // Change this if hosting outside mongodb-developer
 const organizationName = "mongodb-developer";
 
 // Main page config
-const title = "Creating Compelling Search Experiences";
-const tagLine = "A Lab by MongoDB to help you build a search experience with MongoDB Atlas Search";
-const startButtonTitle = "Enter The Search Party";
+const title = "创建引人入胜的搜索体验";
+const tagLine = "由 MongoDB 提供实验环境，帮助您使用 MongoDB Atlas Search 构建搜索功能";
+const startButtonTitle = "进入搜索实验";
 const favicon = "img/favicon.svg"
 
 // Main Page Features
 const featureList = [
   {
-    title: 'Hands-On Experiences',
+    title: '动手实验',
     illustration: 'img/coding.png',
     description: `
-        Learn by doing, not by reading.
+        通过实践学习，而不是通过阅读学习。
     `,
   },
   {
-    title: 'Amazing Instructors',
+    title: '优秀的导师',
     illustration: 'img/highfive.png',
     description: `
-        Build it with the help of our amazing instructors, or just do it on your own.
+        在我们优秀的导师帮助下构建，或者自己动手完成。
     `,
   },
   {
-    title: 'Take-Home Material',
+    title: '带回家的资料',
     illustration: 'img/writing.png',
     description: `
-        Take home the material and keep learning.
+        带回这份资料，继续学习。
     `,
   },
 ];
@@ -50,24 +50,24 @@ const utmParams = `utm_campaign=devrel&utm_source=workshop&utm_medium=cta&utm_co
 
 const footerLinks = [
   {
-    label: "Try MongoDB Atlas",
+    label: "试用 MongoDB Atlas",
     href: `https://www.mongodb.com/try?${utmParams}`,
   },
   {
-    label: "Forums",
+    label: "论坛",
     href: `https://www.mongodb.com/community/forums/${utmParams}`,
   },
   {
-    label: "Developer Center",
+    label: "开发者中心",
     href: `https://www.mongodb.com/developer/${utmParams}`,
   },
   {
-    label: "MongoDB University",
+    label: "MongoDB 大学",
     href: `https://learn.mongodb.com/${utmParams}`,
   },
   {
     href: `https://github.com/${organizationName}/${workshopName}`,
-    label: "This lab in GitHub",
+    label: "GitHub 上的更多实验",
   },
   {
     label: `© ${new Date().getFullYear()} MongoDB, Inc.`,

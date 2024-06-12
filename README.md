@@ -1,26 +1,26 @@
-# Developer Days Search Lab
+# 开发者日搜索实验室
 
-This is the Search Lab used during Developer Days that covers using Atlas Search and Vector Search
+这是在开发者日期间使用的搜索实验室，涵盖了使用 Atlas Search 和 Vector Search。
 
-You can access the online version on the Search Lab [here](https://mongodb-developer.github.io/search-lab/)
+您可以在 [此处](https://mongodb-developer.github.io/search-lab-cn/) 访问在线版搜索实验室。
 
-## Running the Lab Locally
+## 本地运行实验
 
-If you want to run the lab locally, you can start by cloning the repository or downloading the code. You will need to have [Node.js](https://nodejs.org/en/) installed.
+如果您想在本地运行实验，可以开始克隆仓库或下载代码。您需要安装 [Node.js](https://nodejs.org/en/)。
 
-Once you have the code, you can run the following commands to install the dependencies and start the server:
+一旦您获得代码，可以运行以下命令来安装依赖并启动服务器：
 
 ```
 npm install
 npm start
 ```
 
-You can then access the lab at http://localhost:3000
+然后您可以通过 http://localhost:3000 访问实验室。
 
-## Contributing
+## 贡献
 
-If you find any issues with the lab, please open an issue or submit a pull request.
+如果您发现实验室有任何问题，请打开一个 issue 或提交一个 pull request。
 
-## License
+## 许可证
 
-This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details
+该项目根据 Apache 2.0 许可证授权 - 有关详细信息，请参阅 [LICENSE](LICENSE) 文件。
